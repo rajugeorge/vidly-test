@@ -1,0 +1,5 @@
+{
+    "database": {
+        "DB_URL": "mongodb://db/vidly"
+    }
+}
