@@ -1,5 +1,8 @@
 {
     "database": {
         "DB_URL": "mongodb://db/vidly"
+    },
+    "authentication": {
+        "jwtkey": "devKey12345"
     }
 }

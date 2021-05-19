@@ -14,22 +14,24 @@ services:
             - NODE_ENV=development
             - DEBUG=app:startup
             - DB_SERVER_NAME=db
-            - JWT_KEY="12345"
-    # api-tests:
-    #     build:
-    #         context: ./api
-    #         dockerfile: Dockerfile-test
-    #     container_name: vidly_api_tests
-    #     volumes:
-    #         - ./api:/app
-    #         - /app/node_modules
-    #     depends_on:
-    #         - db
-    #     environment:
-    #         - NODE_ENV=development
-    #         - DEBUG=app:startup
-    #         - DB_SERVER_NAME=db
-    #         - JWT_KEY="12345"
+            - JWT_KEY="devEnvKey12345"
+            - PORT=3000
+    api-tests:
+        build:
+            context: ./api
+            dockerfile: Dockerfile-test
+        container_name: vidly_api_tests
+        volumes:
+            - ./api:/app
+            - /app/node_modules
+        depends_on:
+            - db
+        environment:
+            - NODE_ENV=test
+            - DEBUG=app:startup
+            - DB_SERVER_NAME=db
+            - JWT_KEY="testEnvKey12345"
+            - PORT=5000
     db:
         image: mongo:4.0-xenial
         container_name: vidly_db
